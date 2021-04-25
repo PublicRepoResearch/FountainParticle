@@ -12,25 +12,25 @@ namespace Fountain {
 
 	#define PARTICLE_TYPE_LAUNCHER 0.0f
 	#define PARTICLE_TYPE_SHELL 1.0f
-		//×î´óËÙ¶È
+		//æœ€å¤§é€Ÿåº¦
 	#define MAX_VELOC glm::vec3(0.0,-3.0,0.0)
-		//×îĞ¡ËÙ¶È
+		//æœ€å°é€Ÿåº¦
 	#define MIN_VELOC glm::vec3(0.0,-1.0,0.0)
-		//·¢ÉäÁ£×Ó×î´óÖÜÆÚ
+		//å‘å°„ç²’å­æœ€å¤§å‘¨æœŸ
 	#define MAX_LAUNCH 2.0f*1000.0f
-		//·¢ÉäÁ£×Ó×îĞ¡ÖÜÆÚ
+		//å‘å°„ç²’å­æœ€å°å‘¨æœŸ
 	#define MIN_LAUNCH 0.3f*1000.0f
-		//³õÊ¼µã¾«Áé´óĞ¡
+		//åˆå§‹ç‚¹ç²¾çµå¤§å°
 	#define INIT_SIZE 10.0f
 	#define MAX_SIZE 8.0f
 	#define MIN_SIZE 3.0f
 
 	const float ANGLE = 120.0f;
-	const int MAX_PARTICLES = 10000;//¶¨ÒåÁ£×Ó·¢ÉäÏµÍ³×î´óµÄÁ£×ÓÊı
+	const int MAX_PARTICLES = 10000;//å®šä¹‰ç²’å­å‘å°„ç³»ç»Ÿæœ€å¤§çš„ç²’å­æ•°
 
-	//³õÊ¼·¢ÉäÆ÷Àı×ÓÊıÁ¿
+	//åˆå§‹å‘å°„å™¨ä¾‹å­æ•°é‡
 	const int INIT_PARTICLES = 5000;
-	//ÂäÑ©ÖĞĞÄ
+	//è½é›ªä¸­å¿ƒ
 	const glm::vec3 center(0.0f);
 	const float radius = 0.01f;
 
@@ -39,8 +39,8 @@ namespace Fountain {
 		float type;
 		glm::vec3 position;
 		glm::vec3 velocity;
-		float lifetimeMills;//ÄêÁä
-		float size;//Á£×Óµã¾«Áé´óĞ¡
+		float lifetimeMills;//å¹´é¾„
+		float size;//ç²’å­ç‚¹ç²¾çµå¤§å°
 	};
 
 	class Fountain
@@ -51,22 +51,22 @@ namespace Fountain {
 		void Render(float frametimeMills, glm::mat4& worldMatrix, glm::mat4 viewMatrix, glm::mat4& projectMatrix);
 	private:
 		bool InitFountain();
-		void UpdateParticles(float frametimeMills);//¸üĞÂÁ£×ÓµÄÎ»ÖÃµÈ
-		void InitRandomTexture(unsigned int size);//Éú³É1Î¬Ëæ»úÎÆÀí
+		void UpdateParticles(float frametimeMills);//æ›´æ–°ç²’å­çš„ä½ç½®ç­‰
+		void InitRandomTexture(unsigned int size);//ç”Ÿæˆ1ç»´éšæœºçº¹ç†
 		void RenderParticles(glm::mat4& worldMatrix, glm::mat4& viewMatrix, glm::mat4& projectMatrix);
-		void GenInitLocation(WaterParticle partciles[], int nums);//Éú³É³õÊ¼Á£×Ó
+		void GenInitLocation(WaterParticle partciles[], int nums);//ç”Ÿæˆåˆå§‹ç²’å­
 
 		unsigned int mCurVBOIndex, mCurTransformFeedbackIndex;
-		GLuint mParticleBuffers[2]; //Á£×Ó·¢ÉäÏµÍ³µÄÁ½¸ö¶¥µã»º´æÇø
+		GLuint mParticleBuffers[2]; //ç²’å­å‘å°„ç³»ç»Ÿçš„ä¸¤ä¸ªé¡¶ç‚¹ç¼“å­˜åŒº
 		GLuint mParticleArrays[2];
-		GLuint mTransformFeedbacks[2];//Á£×Ó·¢ÉäÏµÍ³¶ÔÓ¦µÄTransformFeedback
-		GLuint mRandomTexture;//Ëæ»úÒ»Î¬ÎÆÀí
-		CTexture mSparkTexture;//AlphaÎÆÀí
+		GLuint mTransformFeedbacks[2];//ç²’å­å‘å°„ç³»ç»Ÿå¯¹åº”çš„TransformFeedback
+		GLuint mRandomTexture;//éšæœºä¸€ç»´çº¹ç†
+		CTexture mSparkTexture;//Alphaçº¹ç†
 		CTexture mStartTexture;
-		float mTimer;//Á£×Ó·¢ÉäÆ÷ÒÑ¾­·¢ÉäµÄÊ±¼ä
+		float mTimer;//ç²’å­å‘å°„å™¨å·²ç»å‘å°„çš„æ—¶é—´
 		bool mFirst;
-		Shader* mUpdateShader;//¸üĞÂÁ£×ÓµÄGPUProgram
-		Shader* mRenderShader;//äÖÈ¾Á£×ÓµÄGPUProgram
+		Shader* mUpdateShader;//æ›´æ–°ç²’å­çš„GPUProgram
+		Shader* mRenderShader;//æ¸²æŸ“ç²’å­çš„GPUProgram
 	};
 
 }
