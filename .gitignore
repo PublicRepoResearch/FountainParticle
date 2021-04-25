@@ -1,4 +1,11 @@
+*.user
 /packages
 /.idea
 /.vs
 /x64
+/Debug
+/Release
+/FountainParticle/Debug
+/FountainParticle/x64
+/FountainParticle/*.user
+/*.db
